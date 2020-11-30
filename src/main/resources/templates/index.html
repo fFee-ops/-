@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="jquery-3.4.1.js"></script>
+
+<body>
+<div style="text-align: center">
+    请输入邮箱<input  id="email" type="text"/><button onclick="f()">发送验证码</button>
+    验证码：<input id="authCode" type="text"/> <button onclick="f1()">验证</button>
+</div>
+
+
+
+<script>
+
+
+
+
+    function f() {
+        var email=$("#email").val();
+        var authCode=$("#authCode").val();
+    $.ajax({
+        url:"/send",
+        type: "post",
+        data: {"email":email,"authCode":authCode},
+        success(flag){
+
+            alert(flag);
+        }
+
+    });
+
+    }
+
+    function f1() {
+        var email=$("#email").val();
+        var authCode=$("#authCode").val();
+        $.ajax({
+            url:"/check",
+            type: "post",
+            data: {"email":email,"authCode":authCode},
+            success(flag){
+                if (flag){
+                    alert("校验成功");
+                }else {
+                    alert("校验失败");
+                }
+
+            }
+
+        });
+    }
+
+</script>
+
+</body>
+</html>

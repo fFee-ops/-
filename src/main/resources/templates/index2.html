@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<script src="jquery-3.4.1.js"></script>
+
+<body>
+<div style="text-align: center">
+    请输入用户名<input  id="u" type="text"/>
+    密码：<input id="password" type="text"/> <button onclick="f1()">登陆</button>
+</div>
+
+
+
+<script>
+
+
+
+
+    function f1() {
+        var u=$("#u").val();
+        var password=$("#password").val();
+        $.ajax({
+            url:"/judge",
+            type: "post",
+            data: {"user":u,"password":password},
+            success(flag){
+              alert(flag);
+            }
+
+        });
+    }
+
+</script>
+
+</body>
+</html>
